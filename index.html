@@ -5,8 +5,6 @@
         <link rel="stylesheet" type="text/css" href="css/custom.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="challenges/snake/star.js"></script>
-        <script src="challenges/snake/sketch.js"></script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
@@ -217,7 +215,7 @@
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="false">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">Snake</h5>
@@ -226,7 +224,23 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#sketch.js">sketch.js</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#star.js">star.js</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="sketch.js" class="tab-pane fade in active">
+                            <script src="https://gist.github.com/chrisovergaauw/d9f6c63c9e87bed2f02348584d2ce9c3.js"></script>
+                        </div>
+                        <div id="star.js" class="tab-pane fade">
+                            <script src="https://gist.github.com/chrisovergaauw/0386e30c683074c30b2362bf6f91e129.js"></script>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -235,6 +249,7 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
 
         <script>
             $(function(){
