@@ -4,7 +4,7 @@ var speed;
 
 function setup() {
     var canvas = createCanvas(600, 600);
-    //canvas.parent('modal-body');
+    canvas.parent('result');
     for (var i = 0; i < 800; i++) {
         stars[i] = new Star();
     }
