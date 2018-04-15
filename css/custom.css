@@ -44,3 +44,9 @@ footer p {
     margin-top: auto;
     margin-botton: auto;
 }
+
+#backToTop {
+    position: fixed;
+    bottom: -4px;
+    right: 10px;
+}
