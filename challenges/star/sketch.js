@@ -1,21 +1,16 @@
-var stars = [];
+var s = function(sketch) {
 
-var speed;
+    sketch.setup = function() {
+        var parentDiv = document.getElementById('jumboid');
+        var pwidth = parentDiv.offsetWidth*0.95;
+        var pheight = parentDiv.offsetHeight*0.95;
+        console.log(pheight);
+        sketch.createCanvas(pwidth, pheight);
+        console.log("setup");
+        sketch.background(0);
+    };
 
-function setup() {
-    var canvas = createCanvas(600, 600);
-    canvas.parent('result');
-    for (var i = 0; i < 800; i++) {
-        stars[i] = new Star();
-    }
-}
-
-function draw() {
-    speed = map(mouseX, 0, width, 0, 50);
-    background(0);
-    translate(width / 2, height / 2);
-    for (var i = 0; i < stars.length; i++) {
-        stars[i].update();
-        stars[i].show();
-    }
+    sketch.draw = function() {
+        console.log("draw");
+    };
 }

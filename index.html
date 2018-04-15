@@ -6,6 +6,8 @@
     <link rel="stylesheet" type="text/css" href="css/custom.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="challenges/star/sketch.js"></script>
+    <script src="challenges/star/star.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -21,10 +23,11 @@
                          class="img-fluid rounded-circle" alt="Responsive image">
                 </div>
                 <div class="col-sm-6 col-md-6 py-4">
-                    <h4 class="text-white">About</h4>
-                    <p class="text-muted">Add some information about the album below, the author, or any other
-                        background context. Make it a few sentences long so folks can pick up some informative tidbits.
-                        Then, link them off to some social networking sites or contact information.</p>
+                    <h4 class="text-white text-md-center">About</h4>
+                    <p class="text-muted text-md-center">Enthusiastic and driven developer who thrives best in
+                        competitive, performance
+                        driven environments. Mainly focused on backend development and challenging the status quo.
+                    </p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
@@ -56,18 +59,28 @@
 </header>
 <main role="main">
     <section class="jumbotron text-center" id="jumboid">
-        <div class="container">
-            <h1 class="jumbotron-heading"><b>Solutions Gallery</b><br>by <i>Chris Overgaauw</i></h1>
-            <p class="lead text-muted">This gallery is inspired by the coding train challenges</p>
-            <p class="lead text-muted">p5.js offers a simple way to display my problem solving skills</p>
+        <div class="collapse veriuniq show">
+            <div class="container">
+                <h1 class="jumbotron-heading"><b>Solutions Gallery</b><br>by <i>Chris Overgaauw</i></h1>
+                <p class="lead text-muted">This gallery is inspired by the coding train challenges</p>
+                <p class="lead text-muted">p5.js offers a simple way to display my problem solving skills</p>
+            </div>
+        </div>
+        </div>
+        <div class="collapse veriuniq">
+            <h1 class="display-4">Showcase</h1>
+            <button type="button" data-toggle="collapse" data-target=".veriuniq" class="close showcaseButton"
+                    aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="showcase"></div>
         </div>
         <p>
             <a href="https://www.linkedin.com/in/chrisovergaauw" class="btn btn-primary my-2">Contact me on
                 LinkedIn</a>
-        <a href="http://thecodingtrain.com" class="btn btn-secondary my-2" id="ct-button">Visit the Coding
-            Train</a>
+            <a href="http://thecodingtrain.com" class="btn btn-secondary my-2" id="ct-button">Visit the Coding
+                Train</a>
         </p>
-        </div>
     </section>
 
     <div class="album py-5 bg-light">
@@ -75,7 +88,7 @@
 
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
+                    <div class="card mb-4 box-shadow" id="returnHereAfterShowCaseClose">
                         <img class="card-img-top" alt="Thumbnail [100%x225]" src="challenges/star/thumbnail.png"
                              data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
                         <div class="card-body">
@@ -84,8 +97,11 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
 
+                                    <button type="button" class="showcaseButton btn btn-sm btn-outline-secondary"
+                                            data-toggle="collapse" data-target=".veriuniq" id="test123">Showcase
+                                    </button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal"
-                                            data-target="#exampleModalCenter" id="testid">View
+                                            data-target="#exampleModalCenter">View Code
                                     </button>
                                 </div>
                                 <small class="text-muted">9 mins</small>
@@ -284,21 +300,14 @@
             <div class="modal-body">
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#result">result</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#sketch.js">sketch.js</a>
+                        <a class="nav-link active show" data-toggle="tab" href="#sketch.js">sketch.js</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#star.js">star.js</a>
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div id="result" class="tab-pane fade in active">
-                        <script src="challenges/star/star.js"></script>
-                        <script src="challenges/star/sketch.js"></script>
-                    </div>
-                    <div id="sketch.js" class="tab-pane fade">
+                    <div id="sketch.js" class="tab-pane fade active show">
                         <script src="https://gist.github.com/chrisovergaauw/d9f6c63c9e87bed2f02348584d2ce9c3.js"></script>
                     </div>
                     <div id="star.js" class="tab-pane fade" style="max-height: 70vh;overflow-y: scroll;">
@@ -309,7 +318,6 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Reset</button>
             </div>
         </div>
     </div>
@@ -319,6 +327,10 @@
 <script>
     $(function () {
 
+        $.p5;
+        $.toggle = true;
+        // $.previousElement;
+
         $("#ct-button").hover(function () {
             $('.jumbotron').css('background-color', '').css('background-image', 'url(assets/TCT.jpg)');
         }, function () {
@@ -327,10 +339,30 @@
 
         $('#exampleModalCenter').on('shown.bs.modal', function () {
             console.log("modal shown");
-        })
-
-
+        });
+        $('.showcaseButton').on("click", function (e) {
+            alright(e);
+        });
     });
+
+    function alright(e) {
+        if ($.toggle) {
+            console.log(document.getElementById(e.target.id).closest('.card'));
+            $.previousElement = document.getElementById(e.target.id).closest('.card').id;
+            var showcase = document.getElementById('jumboid');
+            showcase.scrollIntoView({behavior: "smooth"});
+            $.p5 = new p5(s, 'showcase');
+            $.toggle = false;
+            $('#ct-button').hide();
+        } else {
+            $.p5.remove();
+            $.toggle = true;
+            $('#ct-button').show();
+            document.getElementById($.previousElement).scrollIntoView({behavior: "smooth"});
+        }
+    }
+
+
 </script>
 
 <script>
