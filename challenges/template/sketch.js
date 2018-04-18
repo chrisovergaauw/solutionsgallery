@@ -1,16 +1,24 @@
 var s = function(sketch) {
 
-    sketch.setup = function() {
+    //template start
+    sketch.windowResized = function(){
+        sketch.resizeCanvas();
+    };
+
+    sketch.defaultInitStuff = function(){
         var parentDiv = document.getElementById('jumboid');
         var pwidth = parentDiv.offsetWidth*0.95;
         var pheight = parentDiv.offsetHeight*0.95;
-        console.log(pheight);
         sketch.createCanvas(pwidth, pheight);
-        console.log("setup");
+    };
+
+    sketch.setup = function() {
+        sketch.defaultInitStuff();
+        //template stop
         sketch.background(0);
     };
 
     sketch.draw = function() {
-        console.log("draw");
     };
-}
+
+};
