@@ -1,14 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!--BOOTSTRAP-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <!--/BOOTSTRAP-->
 
+    <!--JQUERY + HIGHLIGHT-->
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+    </script>
 
+    <link rel="stylesheet" href="lib/highlight/styles/androidstudio.css">
+    <script src="lib/highlight/highlight.pack.js"></script>
+    <!--/JQUERY + HIGHLIGHT-->
+
+    <!--P5-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!--/P5-->
+
     <script src="challenges/dots/sketch.js"></script>
     <script src="challenges/10-line-maze/sketch.js"></script>
 
@@ -311,11 +325,12 @@
                     </li>
                 </ul>
                 <div class="tab-content">
-                    <div id="sketch.js" class="tab-pane fade active show">
-                        <script src="https://gist.github.com/chrisovergaauw/d9f6c63c9e87bed2f02348584d2ce9c3.js"></script>
+                    <div class="tab-pane fade active show">
+                        <pre><code id="modalSketch" class="javascript"></code></pre>
+                        <!--<script src="https://gist.github.com/chrisovergaauw/d9f6c63c9e87bed2f02348584d2ce9c3.js"></script>-->
                     </div>
                     <div id="star.js" class="tab-pane fade" style="max-height: 70vh;overflow-y: scroll;">
-                        <script src="https://gist.github.com/chrisovergaauw/0386e30c683074c30b2362bf6f91e129.js"></script>
+                        <!--<script src="https://gist.github.com/chrisovergaauw/0386e30c683074c30b2362bf6f91e129.js"></script>-->
                     </div>
                 </div>
 
@@ -329,11 +344,11 @@
 <!-- Modal -->
 
 <script>
-    $(function () {
 
-        $.p5;
+    $(function () {
         $.toggle = true;
         // $.previousElement;
+
 
         $("#ct-button").hover(function () {
             $('.jumbotron').css('background-color', '').css('background-image', 'url(assets/TCT.jpg)');
@@ -343,11 +358,21 @@
 
         $('#exampleModalCenter').on('shown.bs.modal', function () {
             console.log("modal shown");
+            $('#modalSketch').load("challenges/dots/sketch.js");
+            $('pre code').each(function(i, block) {
+                console.log('found pre code block');
+                hljs.highlightBlock(block);
+            });
+
         });
         $('.showcaseButton').on("click", function (e) {
             alright(e);
         });
+
+
     });
+
+
 
     function alright(e) {
         if ($.toggle) {
@@ -370,14 +395,7 @@
 
 
 </script>
-
-<script>
-    console.log("does this work?")
-</script>
 <!-- end of body -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
