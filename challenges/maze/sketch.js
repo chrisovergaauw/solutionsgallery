@@ -1,10 +1,12 @@
-var template = function (sketch) {
+var mazeSketch = function (sketch) {
 
     let scribble = new Scribble( sketch );
 
     let cellSizeInPixels = 30;
     let rows, cols;
     let grid = [];
+    let bgcolor;
+    let fgcolor;
 
     //template start
     sketch.windowResized = function () {
@@ -12,18 +14,24 @@ var template = function (sketch) {
         resetGrid();
     };
 
+    sketch.preload = function(){
+        bgcolor = holder_pickRandomColor(holder_bgColors);
+        fgcolor = holder_pickRandomColor(holder_fgColors);
+    };
+
+
     sketch.defaultInitStuff = function () {
         //TODO: make sketch agnostic about html page it will land on.
         var parentDiv =  document.getElementById('jumboid');
         var pwidth    =  parentDiv.offsetWidth * 0.95;
         var pheight   =  parentDiv.offsetHeight * 0.95;
         sketch.createCanvas(pwidth, pheight);
-    };
 
+    };
     function initCanvas(){
         console.log('init');
-        sketch.background(0);
-        sketch.stroke(255);
+        sketch.background(bgcolor);
+        sketch.stroke(fgcolor);
         sketch.fill(255);
     }
 
@@ -39,7 +47,7 @@ var template = function (sketch) {
     };
 
     function resetGrid(){
-        grid = [];
+        grid.splice(0,grid.length);
         rows = Math.floor(sketch.height  / cellSizeInPixels);
         cols = Math.floor(sketch.width / cellSizeInPixels);
         initCanvas();
