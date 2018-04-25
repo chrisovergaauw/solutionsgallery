@@ -73,22 +73,22 @@ footer p {
     background-color: transparent;
 }
 
-.card-body, modal, #jumboid {
-    background: white;
+.card-body, .modal, #jumboid {
     color: #f1f7fa;
+    background-color: rgba(0,0,0,0.7);
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+#jumboid {
+    background-color: rgba(0,0,0,0.3);
+}
 
-    .card-body, modal, #jumboid {
-        background: none;
-        -webkit-backdrop-filter: brightness(0.3);
-        backdrop-filter: brightness(0.3);
-        color: #f1f7fa;
+@supports (-webkit-backdrop-filter: brightness(0.7)) {
+
+    .card-body, .modal {
+        -webkit-backdrop-filter: brightness(0.5);
     }
 
     #jumboid {
-        -webkit-backdrop-filter: brightness(0.7);
-        backdrop-filter: brightness(0.7);
+    -webkit-backdrop-filter: brightness(0.7);
     }
 }
