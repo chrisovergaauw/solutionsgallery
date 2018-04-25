@@ -1,73 +1,102 @@
 var template = function (sketch) {
 
-    var minCellSizeInPixels;
-    var nodes;
+    let scribble = new Scribble( sketch );
 
-    const N = 1
-    , S = 2
-    , E = 4
-    , W = 8;
-
-    const DX = {N: 0, S: 0, E: -1, W: 1 };
-    const DY = {N: 1, S: -1, E: 0, W: 0 };
-    const OPPOSITE = {N: S, S: N, E: W, W: E};
+    let cellSizeInPixels = 30;
+    let rows, cols;
+    let grid = [];
 
     //template start
     sketch.windowResized = function () {
-        sketch.resizeCanvas();
+        sketch.defaultInitStuff();
+        resetGrid();
     };
 
     sketch.defaultInitStuff = function () {
         //TODO: make sketch agnostic about html page it will land on.
-        var parentDiv = document.getElementById('jumboid');
-        var pwidth = parentDiv.offsetWidth * 0.95;
-        var pheight = parentDiv.offsetHeight * 0.95;
+        var parentDiv =  document.getElementById('jumboid');
+        var pwidth    =  parentDiv.offsetWidth * 0.95;
+        var pheight   =  parentDiv.offsetHeight * 0.95;
         sketch.createCanvas(pwidth, pheight);
-        minCellSizeInPixels = pwidth / 10;
     };
 
-    sketch.setup = function () {
-        sketch.defaultInitStuff();
-        maxNumberOfNodes = sketch.width / minCellSizeInPixels;
-        for (var row = 0; row < maxNumberOfNodes; row++) {
-            for (var col = 0; col < maxNumberOfNodes; col++) {
-                nodes.push([row, col]);
-            }
-        }
-    };
-    sketch.draw = function () {
-
-        sketch.defaultInitStuff();
-        //template stop
+    function initCanvas(){
+        console.log('init');
         sketch.background(0);
-        sketch.stroke(100);
+        sketch.stroke(255);
         sketch.fill(255);
-        sketch.translate(sketch.width % minCellSizeInPixels * -1, sketch.width % minCellSizeInPixels * -1);
-        for (var row = 1; row < maxNumberOfNodes; row++) {
-            for (var col = 1; col < maxNumberOfNodes; col++) {
-                sketch.ellipse(row * minCellSizeInPixels, col * minCellSizeInPixels, 15);
-
-            }
-        }
-    };
-
-
-    //supportive functions
-    sketch.createMatrix = function (width, height) {
-        var matrix = new Array(height);
-        for (var h = 0; h < height; h++) {
-            matrix[h] = new Array(width);
-        }
-        return matrix;
-    };
-
-    sketch.carvePassagesFrom = function(x, y, grid){
-        directions = [N, E, S, W].
-
-    };
-
-    sketch.isValidNode = function (x, y, grid){
-        return (0 <= x <= grid.length && 0 <= y <= grid[0].length && grid[x][y] === 0);
     }
 
+    sketch.setup = function () {
+
+        sketch.defaultInitStuff();
+        initCanvas();
+        scribble.roughness = 0.5;
+        resetGrid();
+        console.log(grid.length);
+    };
+    sketch.draw = function () {
+    };
+
+    function resetGrid(){
+        grid = [];
+        rows = Math.floor(sketch.height  / cellSizeInPixels);
+        cols = Math.floor(sketch.width / cellSizeInPixels);
+        initCanvas();
+        for (let col = 0; col < cols;col++){
+            for (let row = 0; row < rows;row++){
+                let cell = new Cell(row, col);
+                grid.push(cell);
+                console.log('pushed');
+            }
+        }
+        sketch.translate((sketch.width-cols*cellSizeInPixels)/2,(sketch.height-rows*cellSizeInPixels)/2);
+        for (let cell = 0; cell < grid.length;cell++){
+            grid[cell].show();
+        }
+
+    }
+
+    function Cell(row, col){
+        this.x = col*cellSizeInPixels;
+        this.y = row*cellSizeInPixels;
+        this.walls = {top: true, right: true, bottom: true, left: true};
+
+        this.show = function(){
+            for (wall in this.walls){
+                if (this.walls[wall]) {
+                    this.drawWall(wall);
+                }
+            }
+        };
+
+        this.drawWall = function (wall){
+            switch(wall){
+                case 'top':
+                    scribble.scribbleLine(this.x,
+                                this.y,
+                                this.x+cellSizeInPixels,
+                                this.y);
+                    break;
+                case 'right':
+                    scribble.scribbleLine(this.x+cellSizeInPixels,
+                                this.y,
+                                this.x+cellSizeInPixels,
+                                this.y+cellSizeInPixels);
+                    break;
+                case 'bottom':
+                    scribble.scribbleLine(this.x,
+                                this.y+cellSizeInPixels,
+                                this.x+cellSizeInPixels,
+                                this.y+cellSizeInPixels);
+                    break;
+                default: //left
+                    scribble.scribbleLine(this.x,
+                                this.y,
+                                this.x,
+                                this.y+cellSizeInPixels);
+            }
+        }
+
+    }
 };

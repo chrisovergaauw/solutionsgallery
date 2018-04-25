@@ -6,13 +6,13 @@ var starSketch = function(sketch) {
 
     sketch.setup = function () {
         var parentDiv = document.getElementById('jumboid');
-        var pwidth = parentDiv.offsetWidth * 0.95;
-        var pheight = parentDiv.offsetHeight * 0.95;
+        var pwidth = parentDiv.offsetWidth * 0.90;
+        var pheight = parentDiv.offsetHeight;
         sketch.createCanvas(pwidth, pheight);
         sketch.background(0);
         this.p = sketch.createP(getSketchControls);
         this.p.addClass('lead');
-        this.p.addClass('text-muted');
+        this.p.addClass('text-light');
     };
 
     sketch.draw = function () {
@@ -23,7 +23,8 @@ var starSketch = function(sketch) {
 
     sketch.keyPressed = function (k) {
         if (k.key === 'f') {
-            sketch.fullscreen(true);
+            sketch.fullscreen();
+
         }
         if (k.key === 's') {
             sketch.save('thumbnail.png');

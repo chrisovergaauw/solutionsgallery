@@ -12,8 +12,8 @@ var tenLineMazeSketch = function(sketch) {
 
     sketch.defaultInitStuff = function(){
         var parentDiv = document.getElementById('jumboid');
-        var pwidth = parentDiv.offsetWidth*0.95;
-        var pheight = parentDiv.offsetHeight*0.95;
+        var pwidth = parentDiv.offsetWidth*0.90;
+        var pheight = parentDiv.offsetHeight*0.90;
         sketch.createCanvas(pwidth, pheight);
     };
 
