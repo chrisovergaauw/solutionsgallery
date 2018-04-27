@@ -2,11 +2,6 @@
     --jumbotron-padding-y: 3rem;
 }
 
-/*#jumboid {*/
-    /*background-color: rgba(100, 100, 100, .3);*/
-    /*color: white;*/
-}
-
 .jumbotron p:last-child {
     margin-bottom: 0;
 }
