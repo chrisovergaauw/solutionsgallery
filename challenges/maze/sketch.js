@@ -2,7 +2,7 @@ var mazeSketch = function (sketch) {
 
     let mySketch = myP5BoilerPlate(sketch);
     mySketch.scribble = new Scribble(mySketch);
-    mySketch.frameRate(10);
+    mySketch.frameRate(30);
 
     mySketch.cellSizeInPixels = 50;
     mySketch.rows = undefined;
@@ -47,6 +47,8 @@ var mazeSketch = function (sketch) {
             mySketch.current = next;
         }else if(mySketch.stack.length > 0){
             mySketch.current = mySketch.stack.pop();
+        }else{
+            mySketch.noLoop();
         }
     };
 

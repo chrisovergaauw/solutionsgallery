@@ -379,7 +379,6 @@
 
     function alright(e) {
         if ($.toggle) {
-            console.log(document.getElementById(e.target.id).closest('.card'));
             $.previousElement = document.getElementById(e.target.id).closest('.card').id;
             var showcase = document.getElementById('jumboid');
             showcase.scrollIntoView({behavior: "smooth"});

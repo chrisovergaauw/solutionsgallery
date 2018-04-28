@@ -31,11 +31,9 @@ var myP5BoilerPlate = function(sketch){
 
     sketch.toggleLoop = function() {
         if (typeof sketch.whyIsP5_loopPrivate === 'undefined' || sketch.whyIsP5_loopPrivate === true){
-            console.log('a');
             sketch.whyIsP5_loopPrivate = false;
             sketch.noLoop();
         }else{
-            console.log('b');
             sketch.whyIsP5_loopPrivate = true;
             sketch.loop();
         }
