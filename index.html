@@ -32,6 +32,7 @@
     <script src="challenges/dots/sketch.js"></script>
     <script src="challenges/10-line-maze/sketch.js"></script>
     <script src="challenges/maze/sketch.js"></script>
+    <script src="challenges/maze/cell.js"></script>
     <!--/sketches-->
 
     <meta charset="utf-8">
@@ -170,7 +171,7 @@
                             <div class="card-body">
                                 <p class="card-text">Maze generation based on wikipedia's description of the
                                     <a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm#Recursive_backtracker" target="_blank">
-                                        recursive backtracker</a> algorithm</p>
+                                        recursive backtracker</a> algorithm.</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="showcaseButton btn btn-sm btn-outline-warning"
@@ -362,18 +363,6 @@
             $('#jumboid').css('background-image', 'none')
                 .css('background-color', 'rgba(119,136,153, .2)');
         });
-
-        // $('#exampleModalCenter').on('shown.bs.modal', function () {
-        //     console.log("modal shown");
-        //     // $('#modalSketch').load("challenges/dots/sketch.js");
-        //     // $('pre code').each(function (i, block) {
-        //     //     console.log('found pre code block');
-        //     //     hljs.highlightBlock(block);
-        //     // });
-        //     var modal = $(this);
-        //     modal.find('#modalSketch').text('some code')
-        //
-        // });
 
         $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
             var target = $(e.target).attr("href");// activated tab
