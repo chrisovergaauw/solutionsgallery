@@ -1,4 +1,4 @@
-var myP5BoilerPlate = function(sketch){
+var myP5BoilerPlate = function(sketch, callback){
     //Functions that every of my sketches should have are included here.
 
     sketch.keyPressed = function (k) {
@@ -10,7 +10,7 @@ var myP5BoilerPlate = function(sketch){
                 sketch.resizeCanvas(sketch.windowWidth, sketch.windowHeight);
                 break;
             case 's':
-                sketch.save('thumbnail.png');
+                sketch.save('10-line-maze2.png');
                 break;
             case 'p':
                 sketch.toggleLoop();
@@ -23,7 +23,8 @@ var myP5BoilerPlate = function(sketch){
                 }
                 break;
             case 'Escape':
-                alright(null);
+                sketch.remove();
+                break;
             default:
                 console.log("'" + k.key + "' " + "pressed but there's no action tied to this event");
         }
@@ -39,5 +40,9 @@ var myP5BoilerPlate = function(sketch){
         }
 
     };
-    return sketch;
+    callback(sketch);
 };
+
+export {
+  myP5BoilerPlate
+}
