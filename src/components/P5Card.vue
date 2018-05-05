@@ -23,7 +23,6 @@
         <a href="#">#css</a> <a href="#" @click.prevent="navigate">#responsive</a>
         <br>
         <a class="button is-warning is-outlined" v-on:click="setCanvas(challenge)">Showcase</a>
-        <a class="button is-warning is-outlined" v-on:click="setCanvas(challenge)">View Code</a>
         <time datetime="2016-1-1" style="display: none">11:09 PM - 1 Jan 2016</time>
       </div>
     </div>
