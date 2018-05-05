@@ -1,25 +1,35 @@
+/* eslint-disable */
+let myP5BoilerPlate = require('../../../js/myP5BoilerPlate.js').myP5BoilerPlate
+var sketchInstance = function (sketch) {
+//  return myP5BoilerPlate2(sketch, (mySketch) => {
+  let mySketch = myP5BoilerPlate(sketch)
 
+      let getSketchControls = 'f = fullscreen, s = save canvas to PNG'
 
-var starSketch = function(sketch) {
+      mySketch.setup = function () {
+        mySketch.defaultInitStuff()
+        mySketch.background(0)
+      }
 
-    let mySketch = myP5BoilerPlate(sketch);
+      mySketch.draw = function () {
+        // mySketch.fill()
+        mySketch.stroke(255)
+        mySketch.ellipse(mySketch.random(mySketch.width), mySketch.random(mySketch.height), 10, 10)
+      }
 
-    let getSketchControls = "f = fullscreen, s = save canvas to PNG";
+  sketch.windowResized = function () {
+    mySketch.resizeMyCanvas()
+    mySketch.background(0)
+  }
+      return mySketch
+}
 
-    mySketch.setup = function () {
-        var parentDiv = document.getElementById('jumboid');
-        var pwidth = parentDiv.offsetWidth * 0.90;
-        var pheight = parentDiv.offsetHeight;
-        mySketch.createCanvas(pwidth, pheight);
-        mySketch.background(0);
-        this.p = mySketch.createP(getSketchControls);
-        this.p.addClass('lead');
-        this.p.addClass('text-light');
-    };
+let getDescription = function () {
+  return `Just drawing random dots for demo purposes. Goal is to finish\
+          website (as a framework) first.`
+}
 
-    mySketch.draw = function () {
-        //mySketch.fill();
-        mySketch.stroke(255);
-        mySketch.ellipse(mySketch.random(mySketch.width), mySketch.random(mySketch.height), 10, 10);
-    };
-};
+export {
+  sketchInstance,
+  getDescription
+}
