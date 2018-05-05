@@ -1,6 +1,6 @@
 # solutionsgallery
 
-> A project to display some prolem solving skills
+> A project to display some problem solving skills
 
 ## Build Setup
 
