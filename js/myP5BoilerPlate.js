@@ -24,18 +24,22 @@ var myP5BoilerPlate = function (sketch) {
         sketch.fullscreen(true);
         sketch.resizeCanvas(sketch.windowWidth, sketch.windowHeight);
         break;
-      case 's':
-        sketch.save(`${sketch.name}.png`);
-        break;
-      case 'p':
-        sketch.toggleLoop();
-        break;
       case 'n':
         if (!sketch.whyIsP5_loopPrivate) {
           sketch.redraw();
         } else {
           console.log("with 'n' you can only summon the next frame is the canvas is paused with 'p'")
         }
+        break;
+      case 'p':
+        sketch.toggleLoop();
+        break;
+      case 'r':
+        if (sketch.recording){
+
+        }
+      case 's':
+        sketch.save(`${sketch.name}.png`);
         break;
       case 'Escape':
         sketch.remove();
