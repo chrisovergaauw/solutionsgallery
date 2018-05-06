@@ -19,8 +19,8 @@
         </div>
       </div>
 
-      <div class="content"><span v-html="description"></span><br><a>@bulmaio</a>.
-        <a href="#">#css</a> <a href="#" @click.prevent="navigate">#responsive</a>
+      <div class="content" id="tagDiv"><span v-html="description"></span><br>
+        <span v-for="tag in tags" v-bind:key="tag" class="tag is-black is-right">{{tag}}</span>
         <br>
         <a class="button is-warning is-outlined" v-on:click="setCanvas(challenge)">Showcase</a>
         <time datetime="2016-1-1" style="display: none">11:09 PM - 1 Jan 2016</time>
@@ -62,6 +62,9 @@ export default {
   computed: {
     description: function () {
       return require(`../challenges/${this.challenge}/${this.challenge}.js`).getDescription()
+    },
+    tags: function () {
+      return require(`../challenges/${this.challenge}/${this.challenge}.js`).getTags()
     }
   }
 }
@@ -72,5 +75,10 @@ export default {
   .card, .card-content {
     color: #f1f7fa;
     background-color: rgba(0, 0, 0, 0.3);
+  }
+  .tag {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 1rem;
   }
 </style>

@@ -10,9 +10,9 @@
           This gallery is inspired by the coding train challenges.
         </h2>
         <div class="has-text-centered">
-          <a class="button is-info is-rounded" v-bind:href="this.$contactDetails.linkedin">Contact me on LinkedIn</a>
+          <a class="button is-rounded" id="mainActionButton" v-bind:href="this.$contactDetails.linkedin"><b>Contact me on LinkedIn</b></a>
           <p class="is-hidden-desktop">or</p>
-          <a class="button is-warning is-rounded" href="http://thecodingtrain.com">Visit the coding train</a>
+          <a class="button is-rounded" id="secondaryActionButton" href="http://thecodingtrain.com"><u>Visit the coding train</u></a>
         </div>
       </div>
     </div>
@@ -54,5 +54,18 @@ export default {
   .hero .hero-body .subtitle,
   .hero p{
     color: #f1f7fa;
+  }
+
+  #mainActionButton{
+    background: none;
+    color: #f1f7fa;
+    border: 3px solid #f1f7fa;
+  }
+
+  #secondaryActionButton {
+    background: none;
+    color: #f1f7fa;
+    border: none;
+
   }
 </style>

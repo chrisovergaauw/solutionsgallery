@@ -4,7 +4,6 @@
     <section id="divider"></section>
     <my-hero></my-hero>
     <showcase></showcase>
-    <show-code></show-code>
     <gallery></gallery>
   </div>
 </template>

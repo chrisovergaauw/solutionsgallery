@@ -5,7 +5,6 @@ import Cell from './cell'
 let sketchInstance = function (sketch) {
   let mySketch = myP5BoilerPlate(sketch)
   mySketch.scribble = new Scribble(mySketch)
-  mySketch.frameRate(30)
 
   mySketch.cellSizeInPixels = 50
   mySketch.rows = undefined
@@ -124,6 +123,7 @@ let sketchInstance = function (sketch) {
     }
     // STEP 1
     mySketch.current = mySketch.grid[0]
+    mySketch.frameRate(mySketch.grid.length/30)
   }
   return mySketch
 }
@@ -134,7 +134,11 @@ let getDescription = function () {
     recursive backtracker</a> algorithm.`
 }
 
+let getTags =  function () {
+  return ['#dontgetLost', '#demo']
+}
 export {
   sketchInstance,
-  getDescription
+  getDescription,
+  getTags
 }

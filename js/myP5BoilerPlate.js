@@ -12,8 +12,8 @@ var myP5BoilerPlate = function (sketch) {
   }
 
   sketch.desiredCanvasSize = function () {
-    sketch.pwidth = document.body.offsetWidth * 0.75
-    sketch.pheight = document.body.offsetHeight * 0.3
+    sketch.pwidth = document.body.offsetWidth * 0.8
+    sketch.pheight = (document.body.offsetWidth < 768)? sketch.pwidth : sketch.pwidth * 0.45
   }
 
   sketch.keyPressed = function (k) {
@@ -55,8 +55,9 @@ var myP5BoilerPlate = function (sketch) {
     }
 
   };
-  sketch.button = sketch.createButton('close')
-  sketch.button.mousePressed(sketch.remove)
+  sketch.link = sketch.createA('#', 'X')
+  sketch.link.mousePressed(sketch.remove)
+  sketch.link.addClass('button is-warning is-inline-block is-outlined')
   return sketch;
 };
 

@@ -94,7 +94,12 @@ let getDescription = function () {
           </a>`
 }
 
+let getTags =  function () {
+  return ['#oldschool', '#interactive']
+}
+
 export {
   sketchInstance,
-  getDescription
+  getDescription,
+  getTags
 }

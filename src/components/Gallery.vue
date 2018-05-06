@@ -1,5 +1,8 @@
 <template>
   <div>
+    <!--<div class="control is-expanded has-text-centered">-->
+        <!--<input class="input" type="text" placeholder="Normal input">-->
+    <!--</div>-->
     <div class="columns is-centered" v-for="i in rowCount" :key="challenges[i]">
       <div v-for="chal in itemCountInRow(i)" :key="chal" class="column is-3">
         <P5Card :challenge="chal"></P5Card>
@@ -32,4 +35,17 @@ export default {
 }
 </script>
 <style scoped>
+  /*.input{*/
+    /*color: #f1f7fa;*/
+    /*background-color: rgba(0, 0, 0, 0.3);*/
+    /*border: none;*/
+    /*width: 75vh;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+  /*}*/
+
+  /*.control {*/
+    /*text-align: center;*/
+    /*margin-bottom: 1rem;*/
+  /*}*/
 </style>

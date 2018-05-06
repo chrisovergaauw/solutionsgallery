@@ -1,7 +1,6 @@
 /* eslint-disable */
 let myP5BoilerPlate = require('../../../js/myP5BoilerPlate.js').myP5BoilerPlate
 var sketchInstance = function (sketch) {
-//  return myP5BoilerPlate2(sketch, (mySketch) => {
   let mySketch = myP5BoilerPlate(sketch)
 
       let getSketchControls = 'f = fullscreen, s = save canvas to PNG'
@@ -12,9 +11,9 @@ var sketchInstance = function (sketch) {
       }
 
       mySketch.draw = function () {
-        // mySketch.fill()
-        mySketch.stroke(255)
-        mySketch.ellipse(mySketch.random(mySketch.width), mySketch.random(mySketch.height), 10, 10)
+        mySketch.stroke(mySketch.random(255),mySketch.random(255),mySketch.random(255))
+        let radius = mySketch.random(10)
+        mySketch.ellipse(mySketch.random(mySketch.width), mySketch.random(mySketch.height), radius*2, radius*2)
       }
 
   sketch.windowResized = function () {
@@ -29,7 +28,12 @@ let getDescription = function () {
           website (as a framework) first.`
 }
 
+let getTags =  function () {
+  return ['#boring', '#demo']
+}
+
 export {
   sketchInstance,
-  getDescription
+  getDescription,
+  getTags
 }
