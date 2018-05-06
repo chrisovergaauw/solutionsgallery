@@ -25,7 +25,7 @@ var myP5BoilerPlate = function (sketch) {
         sketch.resizeCanvas(sketch.windowWidth, sketch.windowHeight);
         break;
       case 's':
-        sketch.save('10-line-maze2.png');
+        sketch.save(`${sketch.name}.png`);
         break;
       case 'p':
         sketch.toggleLoop();

@@ -3,6 +3,7 @@ let myP5BoilerPlate = require('../../../js/myP5BoilerPlate.js').myP5BoilerPlate
 import { holder_pickRandomColorSet } from "../../../js/customHolder";
 import Cell from './cell'
 let sketchInstance = function (sketch) {
+  sketch.name='maze'
   let mySketch = myP5BoilerPlate(sketch)
   mySketch.scribble = new Scribble(mySketch)
 

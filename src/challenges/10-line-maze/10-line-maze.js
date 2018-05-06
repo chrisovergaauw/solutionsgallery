@@ -5,6 +5,7 @@ import {  holder_pickRandomColor,
   holder_getColorSets} from "../../../js/customHolder";
 let myP5BoilerPlate = require('../../../js/myP5BoilerPlate.js').myP5BoilerPlate
 var sketchInstance = function (sketch) {
+  sketch.name='10-line-maze'
   let mySketch = myP5BoilerPlate(sketch)
 
   let x = 0

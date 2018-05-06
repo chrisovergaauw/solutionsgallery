@@ -1,24 +1,34 @@
 /* eslint-disable */
-var s = function (sketch) {
+let sketchInstance = function (sketch) {
+  sketch.name='example'
+  let mySketch = myP5BoilerPlate(sketch)
   // template start
-  sketch.windowResized = function () {
-    sketch.resizeCanvas()
+  mySketch.windowResized = function () {
+    mymySketch.resizeMyCanvas()
   }
 
-  sketch.defaultInitStuff = function () {
-    var parentDiv = document.getElementById('jumboid')
-    var pwidth = parentDiv.offsetWidth * 0.95
-    var pheight = parentDiv.offsetHeight * 0.95
-    sketch.createCanvas(pwidth, pheight)
-  }
-
-  sketch.setup = function () {
-    sketch.defaultInitStuff()
+  mymySketch.setup = function () {
+    mySketch.defaultInitStuff()
     // template stop
-    sketch.background(0)
+    mySketch.background(0)
   }
 
-  sketch.draw = function () {
+  mySketch.draw = function () {
   }
 
 }
+
+let getDescription = function () {
+  return `example description`
+}
+
+let getTags = function () {
+  return ['#example', '#demo']
+}
+export {
+  sketchInstance,
+  getDescription,
+  getTags
+}
+
+

@@ -1,6 +1,7 @@
 /* eslint-disable */
 let myP5BoilerPlate = require('../../../js/myP5BoilerPlate.js').myP5BoilerPlate
 var sketchInstance = function (sketch) {
+  sketch.name='dots'
   let mySketch = myP5BoilerPlate(sketch)
 
       let getSketchControls = 'f = fullscreen, s = save canvas to PNG'
